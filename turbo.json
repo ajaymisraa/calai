@@ -9,7 +9,8 @@
     "NODE_ENV",
     "PROCESSOR_API_URL",
     "CHROME_PATH",
-    "NEXT_PUBLIC_*"
+    "NEXT_PUBLIC_*",
+    "VERCEL"
   ],
   "tasks": {
     "build": {

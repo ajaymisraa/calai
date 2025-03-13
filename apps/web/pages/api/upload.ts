@@ -34,8 +34,15 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Generate a unique book ID
     const bookId = uuidv4();
     
+    // For Vercel serverless environment, we need to use the /tmp directory
+    // which is the only writable directory in the serverless environment
+    const isVercel = process.env.VERCEL === '1';
+    
     // Create a temporary directory for the upload
-    const uploadDir = path.join(process.cwd(), 'public', 'uploads');
+    const uploadDir = isVercel
+      ? path.join('/tmp', 'uploads')
+      : path.join(process.cwd(), 'public', 'uploads');
+      
     if (!fs.existsSync(uploadDir)) {
       fs.mkdirSync(uploadDir, { recursive: true });
     }
@@ -47,8 +54,22 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Copy the file to our uploads directory
     fs.copyFileSync(file.filepath, imagePath);
     
-    // Get image URL for the processor service
-    const imageUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/uploads/${fileName}`;
+    // In Vercel, we'll just pass the uploaded file directly to the processor
+    // because we can't serve static files from /tmp
+    // Instead of generating a URL, we'll use Base64 encoding to pass the image data
+    let imageUrl = '';
+    
+    if (isVercel) {
+      // Read the file as binary data
+      const imageBuffer = fs.readFileSync(imagePath);
+      // Convert to Base64
+      const base64Image = imageBuffer.toString('base64');
+      // Create a data URL
+      imageUrl = `data:image/jpeg;base64,${base64Image}`;
+    } else {
+      // For local development, use the traditional URL approach
+      imageUrl = `${process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000'}/uploads/${fileName}`;
+    }
     
     // Process the image with the processor service
     const processorApiUrl = process.env.PROCESSOR_API_URL || 'http://localhost:3002';
@@ -108,7 +129,16 @@ async function processBookInBackground(imageUrl: string, bookId: string, baseUrl
     // Store initial book info to help with error handling and service unavailability
     try {
       // Create a metadata file with the book ID to help with error recovery
-      const metaFilePath = path.join(process.cwd(), 'public', 'uploads', `${bookId}.meta.json`);
+      const isVercel = process.env.VERCEL === '1';
+      const metaDir = isVercel 
+        ? path.join('/tmp', 'uploads') 
+        : path.join(process.cwd(), 'public', 'uploads');
+        
+      if (!fs.existsSync(metaDir)) {
+        fs.mkdirSync(metaDir, { recursive: true });
+      }
+      
+      const metaFilePath = path.join(metaDir, `${bookId}.meta.json`);
       fs.writeFileSync(metaFilePath, JSON.stringify({
         bookId,
         imageUrl,
@@ -150,7 +180,16 @@ async function processBookInBackground(imageUrl: string, bookId: string, baseUrl
       
       // Save error information for future reference
       try {
-        const metaFilePath = path.join(process.cwd(), 'public', 'uploads', `${bookId}.meta.json`);
+        const isVercel = process.env.VERCEL === '1';
+        const metaDir = isVercel 
+          ? path.join('/tmp', 'uploads') 
+          : path.join(process.cwd(), 'public', 'uploads');
+        
+        if (!fs.existsSync(metaDir)) {
+          fs.mkdirSync(metaDir, { recursive: true });
+        }
+        
+        const metaFilePath = path.join(metaDir, `${bookId}.meta.json`);
         fs.writeFileSync(metaFilePath, JSON.stringify({
           bookId,
           imageUrl,
@@ -174,7 +213,16 @@ async function processBookInBackground(imageUrl: string, bookId: string, baseUrl
       
       // Save partial information for future reference
       try {
-        const metaFilePath = path.join(process.cwd(), 'public', 'uploads', `${bookId}.meta.json`);
+        const isVercel = process.env.VERCEL === '1';
+        const metaDir = isVercel 
+          ? path.join('/tmp', 'uploads') 
+          : path.join(process.cwd(), 'public', 'uploads');
+          
+        if (!fs.existsSync(metaDir)) {
+          fs.mkdirSync(metaDir, { recursive: true });
+        }
+        
+        const metaFilePath = path.join(metaDir, `${bookId}.meta.json`);
         fs.writeFileSync(metaFilePath, JSON.stringify({
           bookId,
           imageUrl,
@@ -192,7 +240,16 @@ async function processBookInBackground(imageUrl: string, bookId: string, baseUrl
     } else if (response.data) {
       // Save successful processing information
       try {
-        const metaFilePath = path.join(process.cwd(), 'public', 'uploads', `${bookId}.meta.json`);
+        const isVercel = process.env.VERCEL === '1';
+        const metaDir = isVercel 
+          ? path.join('/tmp', 'uploads') 
+          : path.join(process.cwd(), 'public', 'uploads');
+          
+        if (!fs.existsSync(metaDir)) {
+          fs.mkdirSync(metaDir, { recursive: true });
+        }
+        
+        const metaFilePath = path.join(metaDir, `${bookId}.meta.json`);
         fs.writeFileSync(metaFilePath, JSON.stringify({
           bookId,
           imageUrl,
@@ -269,7 +326,16 @@ async function processBookInBackground(imageUrl: string, bookId: string, baseUrl
     
     // Save error information
     try {
-      const metaFilePath = path.join(process.cwd(), 'public', 'uploads', `${bookId}.meta.json`);
+      const isVercel = process.env.VERCEL === '1';
+      const metaDir = isVercel 
+        ? path.join('/tmp', 'uploads') 
+        : path.join(process.cwd(), 'public', 'uploads');
+        
+      if (!fs.existsSync(metaDir)) {
+        fs.mkdirSync(metaDir, { recursive: true });
+      }
+      
+      const metaFilePath = path.join(metaDir, `${bookId}.meta.json`);
       fs.writeFileSync(metaFilePath, JSON.stringify({
         bookId,
         imageUrl,
