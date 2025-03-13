@@ -1,84 +1,92 @@
-# Turborepo starter
+# Book Extraction AI
 
-This Turborepo starter is maintained by the Turborepo core team.
+This project is a monorepo built with Turborepo that extracts text from book covers using AI. It consists of two main services:
 
-## Using this example
+1. **Web Service**: Handles user uploads and displays results
+2. **Processor Service**: Performs the actual AI processing of book images
 
-Run the following command:
+## How It Works
 
-```sh
-npx create-turbo@latest
-```
+1. User uploads an image of a book cover through the web interface
+2. The web service stores the image and sends the URL to the processor service
+3. The processor service validates if the image contains a book
+4. If valid, the processor determines if the book is fiction or non-fiction
+5. The processor extracts text from the first page (non-fiction) or second page (fiction)
+6. The extracted text is returned to the web service and displayed to the user
 
-## What's inside?
+## Prerequisites
 
-This Turborepo includes the following packages/apps:
+- Node.js 18+ and npm
+- OpenAI API key (for GPT-4 Vision)
 
-### Apps and Packages
+## Setup
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+1. Clone the repository
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Set up environment variables:
+   - Copy `.env.example` to `.env` in both `apps/web` and `apps/processor` directories
+   - Add your OpenAI API key to `apps/processor/.env`
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+## Running the Services
 
-### Utilities
+### Development Mode
 
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
+Run both services in development mode:
 
 ```
-cd my-turborepo
-pnpm dev
+npm run dev
 ```
 
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
+Or run each service individually:
 
 ```
-cd my-turborepo
-npx turbo login
+# Web service
+cd apps/web
+npm run dev
+
+# Processor service
+cd apps/processor
+npm run dev
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
+### Production Mode
 
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
+Build and run in production mode:
 
 ```
-npx turbo link
+# Build all services
+npm run build
+
+# Start all services
+npm run start
 ```
 
-## Useful Links
+## Service URLs
 
-Learn more about the power of Turborepo:
+- Web Service: http://localhost:3000
+- Processor Service: http://localhost:3001
 
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+## Architecture
+
+This project follows a monorepo structure using Turborepo with two main deployments:
+
+1. **Web Service (Next.js)**
+   - Handles user interface and file uploads
+   - Communicates with the processor service
+
+2. **Processor Service (Express)**
+   - Validates book images using GPT-4 Vision
+   - Determines book type (fiction/non-fiction)
+   - Extracts text from appropriate pages
+
+## Technologies Used
+
+- Turborepo for monorepo management
+- Next.js for the web frontend
+- Express.js for the processor service
+- TypeScript for type safety
+- OpenAI GPT-4 Vision for image analysis and text extraction
+# calai
