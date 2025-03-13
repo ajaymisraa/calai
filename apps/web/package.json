@@ -4,7 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 3000",
+    "dev": "next dev --port 3000",
     "build": "next build",
     "start": "next start",
     "lint": "next lint --max-warnings 0",
@@ -12,17 +12,30 @@
   },
   "dependencies": {
     "@repo/ui": "*",
+    "@types/fs-extra": "^11.0.4",
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "formidable": "^3.5.1",
+    "fs-extra": "^11.3.0",
     "next": "^15.2.1",
+    "node-fetch": "^2.6.7",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0"
+    "react-dom": "^19.0.0",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
+    "@tailwindcss/typography": "^0.5.10",
+    "@types/formidable": "^3.4.5",
     "@types/node": "^22.13.9",
     "@types/react": "19.0.10",
     "@types/react-dom": "19.0.4",
+    "@types/uuid": "^9.0.7",
+    "autoprefixer": "^10.4.16",
     "eslint": "^9.21.0",
+    "postcss": "^8.4.32",
+    "tailwindcss": "^3.4.0",
     "typescript": "5.8.2"
   }
 }

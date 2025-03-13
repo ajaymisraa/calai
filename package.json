@@ -9,7 +9,12 @@
     "check-types": "turbo run check-types"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.0.13",
+    "@types/uuid": "^10.0.0",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.3",
     "prettier": "^3.5.3",
+    "tailwindcss": "^4.0.12",
     "turbo": "^2.4.4",
     "typescript": "5.8.2"
   },
@@ -20,5 +25,20 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@chakra-ui/icons": "^2.2.4",
+    "@chakra-ui/react": "^3.9.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@google-cloud/vision": "^4.3.3",
+    "@shadcn/ui": "^0.0.4",
+    "@sparticuz/chromium": "^133.0.0",
+    "canvas": "^3.1.0",
+    "framer-motion": "^12.4.10",
+    "puppeteer": "^24.4.0",
+    "puppeteer-core": "^24.4.0",
+    "sharp": "^0.33.5",
+    "tesseract.js": "^6.0.0"
+  }
 }

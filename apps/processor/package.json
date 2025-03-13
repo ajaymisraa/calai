@@ -1,0 +1,49 @@
+{
+  "name": "processor",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "node run-with-filter.js ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc",
+    "start": "node run-with-filter.js node dist/index.js",
+    "lint": "eslint .",
+    "extract-preview": "node run-with-filter.js ts-node src/scripts/extract-google-books-preview.ts",
+    "extract-harry-potter": "node run-with-filter.js ts-node src/scripts/extract-google-books-preview.ts \"Harry Potter and the Sorcerer's Stone\" \"J.K. Rowling\"",
+    "ocr:process": "node run-with-filter.js ts-node src/scripts/processBookImagesWithOCR.ts",
+    "test:analysis": "node run-with-filter.js ts-node src/scripts/testBookAnalysis.ts", 
+    "fix:content": "node run-with-filter.js ts-node src/scripts/fixContentAnalysisFiles.ts",
+    "fix:content:all": "node run-with-filter.js ts-node src/scripts/fixContentAnalysisFiles.ts",
+    "test:playwright": "node run-with-filter.js ts-node src/scripts/test-playwright.ts"
+  },
+  "dependencies": {
+    "@mistralai/mistralai": "^1.5.1",
+    "@playwright/test": "^1.51.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/node-fetch": "^2.6.12",
+    "axios": "^1.6.7",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "form-data": "^4.0.0",
+    "fs-extra": "^11.3.0",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^2.6.7",
+    "node-tesseract-ocr": "^2.2.1",
+    "openai": "^4.86.2",
+    "pdf-lib": "^1.17.1",
+    "playwright-core": "^1.51.0",
+    "tesseract.js": "^4.1.4"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/fs-extra": "^11.0.4",
+    "@types/multer": "^1.4.11",
+    "@types/node": "^20.11.20",
+    "eslint-config-custom": "*",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.2",
+    "typescript-config": "*"
+  }
+}
