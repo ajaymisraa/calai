@@ -1,0 +1,244 @@
+[2025-03-13T21:41:48.670Z] === Book Processing Log ===
+[2025-03-13T21:41:48.671Z] Book ID: 8afffc5f-8523-4e70-aa36-c05695e0d57e
+[2025-03-13T21:41:48.671Z] Started: 2025-03-13T21:41:48.670Z
+[2025-03-13T21:41:48.671Z] System: darwin 24.3.0
+[2025-03-13T21:41:48.671Z] Node: v20.18.1
+[2025-03-13T21:41:48.671Z] ===============================
+[2025-03-13T21:41:48.671Z] 
+[2025-03-13T21:41:48.671Z] ===== MILESTONE: REQUEST_RECEIVED =====
+[2025-03-13T21:41:48.671Z] New process-book request received
+[2025-03-13T21:41:48.671Z] [LOG] Milestone reached: REQUEST_RECEIVED
+[2025-03-13T21:41:48.671Z] === COMPLETE REQUEST DETAILS ===
+[2025-03-13T21:41:48.671Z] Timestamp: 2025-03-13T21:41:48.671Z
+[2025-03-13T21:41:48.671Z] Request Method: POST
+[2025-03-13T21:41:48.671Z] Request URL: /api/process-book
+[2025-03-13T21:41:48.671Z] Remote IP: ::1
+[2025-03-13T21:41:48.671Z] --- Headers ---
+[2025-03-13T21:41:48.671Z] {
+  "accept": "application/json, text/plain, */*",
+  "content-type": "application/json",
+  "user-agent": "axios/1.8.1",
+  "content-length": "134",
+  "accept-encoding": "gzip, compress, deflate, br",
+  "host": "localhost:3002",
+  "connection": "keep-alive"
+}
+[2025-03-13T21:41:48.671Z] --- Request Body ---
+[2025-03-13T21:41:48.671Z] {
+  "imageUrl": "http://localhost:3000/uploads/8afffc5f-8523-4e70-aa36-c05695e0d57e.jpeg",
+  "bookId": "8afffc5f-8523-4e70-aa36-c05695e0d57e"
+}
+[2025-03-13T21:41:48.671Z] === END REQUEST DETAILS ===
+
+[2025-03-13T21:41:48.671Z] ===== MILESTONE: API_REQUEST_START =====
+[2025-03-13T21:41:48.671Z] Processing book image request
+[2025-03-13T21:41:48.671Z] [LOG] Milestone reached: API_REQUEST_START
+[2025-03-13T21:41:48.671Z] ===== MILESTONE: IMAGE_ANALYSIS_START =====
+[2025-03-13T21:41:48.671Z] Analyzing book cover image
+[2025-03-13T21:41:48.671Z] [LOG] Milestone reached: IMAGE_ANALYSIS_START
+[2025-03-13T21:41:48.671Z] === BOOK IMAGE ANALYSIS STARTED ===
+[2025-03-13T21:41:48.671Z] Analyzing image URL: http://localhost:3000/uploads/8afffc5f-8523-4e70-aa36-c05695e0d57e.jpeg
+[2025-03-13T21:41:48.671Z] Downloading image to create data URI...
+[2025-03-13T21:41:48.671Z] [LOG] Fetching image from URL: http://localhost:3000/uploads/8afffc5f-8523-4e70-aa36-c05695e0d57e.jpeg
+[2025-03-13T21:41:48.720Z] [LOG] Image fetched successfully, size: 397499 bytes
+[2025-03-13T21:41:48.720Z] Image successfully downloaded and converted to data URI
+[2025-03-13T21:41:48.720Z] Initiating OpenAI vision analysis...
+[2025-03-13T21:41:53.785Z] OpenAI analysis complete. Response status: Success
+[2025-03-13T21:41:53.785Z] [LOG] Book detected: {"title":"The Subtle Art of Not Giving a F*ck","author":"Mark Manson","isNonFiction":true}
+[2025-03-13T21:41:53.785Z] Book detection result: isBook=true, title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", isNonFiction=true
+[2025-03-13T21:41:53.785Z] Detection reasoning: The image prominently features a book cover with a clear title, author name, and indicates a non-fiction genre through the subtitle and cover design.
+[2025-03-13T21:41:53.785Z] === BOOK IMAGE ANALYSIS COMPLETE ===
+[2025-03-13T21:41:53.785Z] ===== MILESTONE: IMAGE_ANALYSIS_COMPLETE =====
+[2025-03-13T21:41:53.785Z] Book cover analysis complete
+[2025-03-13T21:41:53.785Z] [LOG] Milestone reached: IMAGE_ANALYSIS_COMPLETE
+[2025-03-13T21:41:53.785Z] === BOOK METADATA ANALYSIS RESULT ===
+[2025-03-13T21:41:53.785Z] {
+  "isBook": true,
+  "title": "The Subtle Art of Not Giving a F*ck",
+  "author": "Mark Manson",
+  "isNonFiction": true,
+  "confidence": 0.99
+}
+[2025-03-13T21:41:53.785Z] === END METADATA ANALYSIS ===
+
+[2025-03-13T21:41:53.785Z] [LOG] Image is a book, retrieving content...
+[2025-03-13T21:41:53.785Z] ===== MILESTONE: BOOK_CONTENT_START =====
+[2025-03-13T21:41:53.785Z] Getting book content for "The Subtle Art of Not Giving a F*ck"
+[2025-03-13T21:41:53.785Z] [LOG] Milestone reached: BOOK_CONTENT_START
+[2025-03-13T21:41:53.786Z] === BOOK CONTENT PROCESSING STARTED ===
+[2025-03-13T21:41:53.786Z] Image URL: http://localhost:3000/uploads/8afffc5f-8523-4e70-aa36-c05695e0d57e.jpeg
+[2025-03-13T21:41:53.786Z] Original Book ID: 8afffc5f-8523-4e70-aa36-c05695e0d57e
+[2025-03-13T21:41:53.786Z] Existing Metadata: {
+  "isBook": true,
+  "title": "The Subtle Art of Not Giving a F*ck",
+  "author": "Mark Manson",
+  "isNonFiction": true,
+  "confidence": 0.99
+}
+[2025-03-13T21:41:53.786Z] [LOG] Book metadata analysis complete: The Subtle Art of Not Giving a F*ck by Mark Manson, isBook: true, isNonFiction: true
+[2025-03-13T21:41:53.786Z] [LOG] Searching Google Books for: "The Subtle Art of Not Giving a F*ck" by Mark Manson
+[2025-03-13T21:41:53.786Z] [LOG] Searching Google Books for: intitle:"The Subtle Art of Not Giving a F*ck" inauthor:"Mark Manson"
+[2025-03-13T21:41:54.299Z] [LOG] Preview available for: The Subtle Art of Not Giving a F*ck by Mark Manson
+[2025-03-13T21:41:54.299Z] [LOG] Attempting to extract pages from preview: http://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api
+[2025-03-13T21:41:54.299Z] [LOG] Starting to extract preview pages using direct URL navigation...
+[2025-03-13T21:41:54.299Z] [LOG] Extracting preview pages for book: yng_CwAAQBAJ
+[2025-03-13T21:41:54.299Z] [LOG] Using web reader link: http://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api
+[2025-03-13T21:41:54.692Z] [LOG] Using base URL: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api
+[2025-03-13T21:41:54.692Z] [LOG] Navigating to initial page to detect pattern...
+[2025-03-13T21:41:54.692Z] [LOG] Navigating to initial page: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=PA1
+[2025-03-13T21:42:00.549Z] [LOG] Final URL after initial navigation: https://play.google.com/books/reader?id=yng_CwAAQBAJ&pg=GBS.PT1&hl=&as_pt=BOOKS&source=gbs_api
+[2025-03-13T21:42:00.550Z] [LOG] Detected PT format: GBS.PT1
+[2025-03-13T21:42:00.596Z] [LOG] Successfully captured first page with pattern GBS.PT1
+[2025-03-13T21:42:00.596Z] [LOG] Navigating to pattern GBS.PT3: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=GBS.PT3
+[2025-03-13T21:42:00.989Z] [LOG] Final URL after navigation: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=GBS.PT3
+[2025-03-13T21:42:00.989Z] [LOG] Waiting for page pattern GBS.PT3 to render...
+[2025-03-13T21:42:02.989Z] [LOG] Capturing page pattern GBS.PT3...
+[2025-03-13T21:42:03.031Z] [LOG] Successfully captured page pattern GBS.PT3
+[2025-03-13T21:42:03.031Z] [LOG] Waiting before going to next page...
+[2025-03-13T21:42:03.531Z] [LOG] Navigating to pattern GBS.PT5: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=GBS.PT5
+[2025-03-13T21:42:03.717Z] [LOG] Final URL after navigation: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=GBS.PT5
+[2025-03-13T21:42:03.717Z] [LOG] Waiting for page pattern GBS.PT5 to render...
+[2025-03-13T21:42:05.717Z] [LOG] Capturing page pattern GBS.PT5...
+[2025-03-13T21:42:05.764Z] [LOG] Successfully captured page pattern GBS.PT5
+[2025-03-13T21:42:05.764Z] [LOG] Waiting before going to next page...
+[2025-03-13T21:42:06.266Z] [LOG] Navigating to pattern GBS.PT7: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=GBS.PT7
+[2025-03-13T21:42:06.451Z] [LOG] Final URL after navigation: https://play.google.com/books/reader?id=yng_CwAAQBAJ&hl=&as_pt=BOOKS&source=gbs_api&pg=GBS.PT7
+[2025-03-13T21:42:06.451Z] [LOG] Waiting for page pattern GBS.PT7 to render...
+[2025-03-13T21:42:08.452Z] [LOG] Capturing page pattern GBS.PT7...
+[2025-03-13T21:42:08.499Z] [LOG] Successfully captured page pattern GBS.PT7
+[2025-03-13T21:42:08.499Z] [LOG] Successfully captured 4 preview pages using GBS.PT pattern
+[2025-03-13T21:42:08.547Z] [LOG] Successfully extracted 4 preview pages!
+[2025-03-13T21:42:08.547Z] [LOG] Caching preview page 1/4...
+[2025-03-13T21:42:08.547Z] [LOG] Using cached image for book yng_CwAAQBAJ, page preview_page_01
+[2025-03-13T21:42:08.547Z] [LOG] Cached preview page 1 at: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/preview_page_01_left.png
+[2025-03-13T21:42:08.547Z] [LOG] Caching preview page 2/4...
+[2025-03-13T21:42:08.547Z] [LOG] Using cached image for book yng_CwAAQBAJ, page preview_page_02
+[2025-03-13T21:42:08.547Z] [LOG] Cached preview page 2 at: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/preview_page_02_left.png
+[2025-03-13T21:42:08.547Z] [LOG] Caching preview page 3/4...
+[2025-03-13T21:42:08.547Z] [LOG] Using cached image for book yng_CwAAQBAJ, page preview_page_03
+[2025-03-13T21:42:08.547Z] [LOG] Cached preview page 3 at: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/preview_page_03_left.png
+[2025-03-13T21:42:08.547Z] [LOG] Caching preview page 4/4...
+[2025-03-13T21:42:08.547Z] [LOG] Using cached image for book yng_CwAAQBAJ, page preview_page_04
+[2025-03-13T21:42:08.547Z] [LOG] Cached preview page 4 at: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/preview_page_04_left.png
+[2025-03-13T21:42:08.547Z] [LOG] Successfully cached 4 preview pages
+[2025-03-13T21:42:08.547Z] [LOG] Google Books preview available: PARTIAL
+[2025-03-13T21:42:08.548Z] [LOG] Created ID mapping between 8afffc5f-8523-4e70-aa36-c05695e0d57e and yng_CwAAQBAJ with original metadata
+[2025-03-13T21:42:08.549Z] [LOG] Reading metadata from existing mapping file: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/id_mapping.json
+[2025-03-13T21:42:08.550Z] [LOG] Found metadata in mapping: title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", isNonFiction=true
+[2025-03-13T21:42:08.550Z] [LOG] Reading existing content analysis file: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/content_analysis.json
+[2025-03-13T21:42:08.551Z] [LOG] Existing content analysis: {
+  "title": "The Subtle Art of Not Giving a F*ck",
+  "author": "Mark Manson",
+  "fiction": false,
+  "first_page": "Chapter 1\nDon’t Try\nCharles Bukowski was an alcoholic, a womanizer, a chronic gamb...
+[2025-03-13T21:42:08.551Z] [LOG] Saving updated content analysis with metadata - title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", fiction=false, isNonFiction=true
+[2025-03-13T21:42:08.551Z] [LOG] Successfully updated content analysis file at /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/content_analysis.json
+[2025-03-13T21:42:08.551Z] [LOG] Skipping content analysis update for original ID 8afffc5f-8523-4e70-aa36-c05695e0d57e - no OCR results file
+[2025-03-13T21:42:08.551Z] [LOG] OCR results file not found at /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/8afffc5f-8523-4e70-aa36-c05695e0d57e/ocr_results.json. Cannot update content_analysis.json without OCR results.
+[2025-03-13T21:42:08.551Z] [LOG] Generating preview images for book: yng_CwAAQBAJ
+[2025-03-13T21:42:08.551Z] [LOG] Book yng_CwAAQBAJ is missing volumeInfo, using limited metadata
+[2025-03-13T21:42:08.551Z] [LOG] Adding 4 extracted preview pages
+[2025-03-13T21:42:08.737Z] [LOG] Splitting image /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/8771e3348652ef21ce72ba158fa1a091.png into left and right halves
+[2025-03-13T21:42:08.756Z] [LOG] Successfully split image into halves:
+[2025-03-13T21:42:08.756Z] [LOG] Left: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/preview_info_left.png
+[2025-03-13T21:42:08.756Z] [LOG] Right: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/preview_info_right.png
+[2025-03-13T21:42:08.756Z] [LOG] Deleted original image: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/8771e3348652ef21ce72ba158fa1a091.png
+[2025-03-13T21:42:08.756Z] [LOG] Generated 5 preview images for book yng_CwAAQBAJ
+[2025-03-13T21:42:08.756Z] [LOG] First step: cleaning up cache for book yng_CwAAQBAJ
+[2025-03-13T21:42:08.756Z] [LOG] Cleaning up expired cache files...
+[2025-03-13T21:42:08.767Z] [LOG] Cleaned up 4 unnecessary files and 2 preview_info files
+[2025-03-13T21:42:08.767Z] [LOG] Second step: performing OCR for book yng_CwAAQBAJ
+[2025-03-13T21:42:08.768Z] [LOG] Found 8 valid preview page files to process with OCR after cleanup
+[2025-03-13T21:42:08.768Z] [LOG] Running final OCR processing for preview images in /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ
+[2025-03-13T21:42:08.768Z] [LOG] Processing all images in /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ with OCR
+[2025-03-13T21:42:08.769Z] [LOG] OCR already completed for this book (8 pages). Skipping processing.
+[2025-03-13T21:42:08.769Z] [LOG] Content analysis exists and has first/second page content
+[2025-03-13T21:42:08.769Z] [LOG] OCR processing successfully completed for book yng_CwAAQBAJ
+[2025-03-13T21:42:08.769Z] [LOG] Added 4 extracted preview pages to preview images
+[2025-03-13T21:42:08.769Z] [LOG] Preview images generated: 9
+[2025-03-13T21:42:08.769Z] [LOG] Cleaning up expired cache files...
+[2025-03-13T21:42:08.770Z] [LOG] Cleaned up 0 unnecessary files and 0 preview_info files
+[2025-03-13T21:42:08.770Z] [LOG] Processing preview images with OCR in chronological order (after cleanup)...
+[2025-03-13T21:42:08.770Z] [LOG] Processing 9 preview images chronologically for book yng_CwAAQBAJ
+[2025-03-13T21:42:08.771Z] [ERROR] Missing 1 images. Waiting for them to be saved...
+[2025-03-13T21:42:09.716Z] [LOG] Sending content analysis: title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", isNonFiction=true
+[2025-03-13T21:42:10.772Z] [ERROR] Still missing 1 images after waiting. Cannot proceed with OCR.
+[2025-03-13T21:42:10.773Z] [LOG] Cleaning up expired cache files...
+[2025-03-13T21:42:10.775Z] [LOG] Cleaned up 0 unnecessary files and 0 preview_info files
+[2025-03-13T21:42:10.775Z] Starting image generation. Preview count: 9
+[2025-03-13T21:42:10.775Z] [LOG] Setting default recommendedStartPage to 1
+[2025-03-13T21:42:10.775Z] [LOG] Making final check of content_analysis.json metadata
+[2025-03-13T21:42:10.775Z] [LOG] Reading metadata from existing mapping file: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/id_mapping.json
+[2025-03-13T21:42:10.776Z] [LOG] Found metadata in mapping: title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", isNonFiction=true
+[2025-03-13T21:42:10.776Z] [LOG] Reading existing content analysis file: /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/content_analysis.json
+[2025-03-13T21:42:10.776Z] [LOG] Existing content analysis: {
+  "title": "The Subtle Art of Not Giving a F*ck",
+  "author": "Mark Manson",
+  "fiction": false,
+  "first_page": "Chapter 1\nDon’t Try\nCharles Bukowski was an alcoholic, a womanizer, a chronic gamb...
+[2025-03-13T21:42:10.776Z] [LOG] Saving updated content analysis with metadata - title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", fiction=false, isNonFiction=true
+[2025-03-13T21:42:10.777Z] [LOG] Successfully updated content analysis file at /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/yng_CwAAQBAJ/content_analysis.json
+[2025-03-13T21:42:10.778Z] [LOG] Skipping content analysis update for original ID 8afffc5f-8523-4e70-aa36-c05695e0d57e - no OCR results file
+[2025-03-13T21:42:10.785Z] [LOG] Content analysis already has valid first and second page content
+[2025-03-13T21:42:10.785Z] ===== MILESTONE: OCR_CLEANUP_START =====
+[2025-03-13T21:42:10.785Z] Starting OCR text cleanup
+[2025-03-13T21:42:10.785Z] [LOG] Milestone reached: OCR_CLEANUP_START
+[2025-03-13T21:42:10.785Z] [LOG] Cleaning book content pages for yng_CwAAQBAJ...
+[2025-03-13T21:42:10.785Z] [LOG] Processing book "The Subtle Art of Not Giving a F*ck" by Mark Manson (Non-Fiction: true)
+[2025-03-13T21:42:20.120Z] [LOG] OCR cleanup complete. Updating content analysis...
+[2025-03-13T21:42:20.121Z] [LOG] Updated content analysis file for yng_CwAAQBAJ with cleaned text
+[2025-03-13T21:42:20.122Z] [LOG] Skipping content analysis update for originalId 8afffc5f-8523-4e70-aa36-c05695e0d57e - no OCR results file
+[2025-03-13T21:42:20.122Z] ===== MILESTONE: OCR_CLEANUP_COMPLETE =====
+[2025-03-13T21:42:20.122Z] OCR text cleanup completed successfully
+[2025-03-13T21:42:20.122Z] [LOG] Milestone reached: OCR_CLEANUP_COMPLETE
+[2025-03-13T21:42:20.124Z] [LOG] OCR results file not found at /Users/misra.sanjay/Desktop/projects/calai/oa/turborepo/my-turborepo/apps/processor/cache/book-images/8afffc5f-8523-4e70-aa36-c05695e0d57e/ocr_results.json. Cannot update content_analysis.json without OCR results.
+[2025-03-13T21:42:20.124Z] [LOG] FINAL VERIFICATION - Metadata in returned object: title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", isNonFiction=true
+[2025-03-13T21:42:20.124Z] [LOG] Recommended start page: 1
+[2025-03-13T21:42:20.124Z] [LOG] Book availability status: Available
+[2025-03-13T21:42:20.124Z] [LOG] Book processing status: complete
+[2025-03-13T21:42:20.124Z] Book content processing complete
+[2025-03-13T21:42:20.124Z] Final content analysis status: Not available
+[2025-03-13T21:42:20.124Z] Final metadata values: title="The Subtle Art of Not Giving a F*ck", author="Mark Manson", isNonFiction=true
+[2025-03-13T21:42:20.124Z] Final recommended start page: 1
+[2025-03-13T21:42:20.124Z] Final availability status: Available
+[2025-03-13T21:42:20.124Z] Final processing status: complete
+[2025-03-13T21:42:20.124Z] === BOOK CONTENT PROCESSING FINISHED ===
+[2025-03-13T21:42:20.124Z] ===== MILESTONE: BOOK_CONTENT_COMPLETE =====
+[2025-03-13T21:42:20.124Z] Book content processing complete
+[2025-03-13T21:42:20.124Z] [LOG] Milestone reached: BOOK_CONTENT_COMPLETE
+[2025-03-13T21:42:20.124Z] === BOOK CONTENT PROCESSING RESULT ===
+[2025-03-13T21:42:20.124Z] Title: The Subtle Art of Not Giving a F*ck
+[2025-03-13T21:42:20.124Z] Author: Mark Manson
+[2025-03-13T21:42:20.124Z] Non-Fiction: Yes
+[2025-03-13T21:42:20.124Z] Preview Images: 9
+[2025-03-13T21:42:20.124Z] Sequential Pages: 0
+[2025-03-13T21:42:20.124Z] === END CONTENT PROCESSING ===
+
+[2025-03-13T21:42:20.124Z] [LOG] Book processing complete, isNonFiction: true
+[2025-03-13T21:42:20.124Z] [LOG] Preview images generated: 9
+[2025-03-13T21:42:20.124Z] [LOG] Sequential pages generated: 0
+[2025-03-13T21:42:20.124Z] [LOG] Recommended start page: 1
+[2025-03-13T21:42:20.124Z] === API RESPONSE ===
+[2025-03-13T21:42:20.124Z] Status: 200 OK
+[2025-03-13T21:42:20.124Z] Response Body Summary:
+[2025-03-13T21:42:20.124Z] - Book ID: 8afffc5f-8523-4e70-aa36-c05695e0d57e
+[2025-03-13T21:42:20.124Z] - Title: The Subtle Art of Not Giving a F*ck
+[2025-03-13T21:42:20.124Z] - Author: Mark Manson
+[2025-03-13T21:42:20.124Z] - Preview Images: 9
+[2025-03-13T21:42:20.124Z] - OCR Results: 0 pages
+[2025-03-13T21:42:20.124Z] === END API RESPONSE ===
+
+[2025-03-13T21:42:20.124Z] ===== MILESTONE: API_REQUEST_COMPLETE =====
+[2025-03-13T21:42:20.124Z] Book processing completed successfully
+[2025-03-13T21:42:20.124Z] [LOG] Milestone reached: API_REQUEST_COMPLETE
+[2025-03-13T21:42:20.124Z] 
+[2025-03-13T21:42:20.124Z] === Processing Complete ===
+[2025-03-13T21:42:20.124Z] Finished: 2025-03-13T21:42:20.124Z
+[2025-03-13T21:42:20.124Z] Duration: 31.45 seconds
+[2025-03-13T21:42:20.124Z] === Additional Information ===
+[2025-03-13T21:42:20.124Z] status: "success"
+[2025-03-13T21:42:20.124Z] title: "The Subtle Art of Not Giving a F*ck"
+[2025-03-13T21:42:20.124Z] author: "Mark Manson"
+[2025-03-13T21:42:20.124Z] isNonFiction: true
+[2025-03-13T21:42:20.124Z] previewImages: 9
+[2025-03-13T21:42:20.125Z] sequentialPages: 0

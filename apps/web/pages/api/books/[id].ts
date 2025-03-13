@@ -15,9 +15,10 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   
   try {
     // Fetch book data from the processor service
-    const processorUrl = process.env.PROCESSOR_API_URL || 'http://localhost:3002';
-    console.log(`Fetching book data from processor at ${processorUrl}/books/${id}`);
-    const response = await axios.get(`${processorUrl}/books/${id}`);
+    const processorUrl = process.env.PROCESSOR_API_URL || 'http://localhost:3001';
+    const apiPath = process.env.PROCESSOR_API_PATH || '/api/processor';
+    console.log(`Fetching book data from processor at ${processorUrl}${apiPath}/books/${id}`);
+    const response = await axios.get(`${processorUrl}${apiPath}/books/${id}`);
     
     // If successful, return the data from the processor
     if (response.status === 200) {

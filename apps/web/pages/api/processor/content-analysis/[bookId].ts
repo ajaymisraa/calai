@@ -16,10 +16,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
   try {
     // Get processor API URL from environment variables
-    const processorApiUrl = process.env.PROCESSOR_API_URL || 'http://localhost:3002';
+    const processorApiUrl = process.env.PROCESSOR_API_URL || 'http://localhost:3001';
+    const apiPath = process.env.PROCESSOR_API_PATH || '/api/processor';
     
-    // Use the processor API URL directly without adding /api
-    const baseUrl = processorApiUrl;
+    // Use the processor API URL with API path
+    const baseUrl = `${processorApiUrl}${apiPath}`;
     
     console.log(`Forwarding request to: ${baseUrl}/content-analysis/${bookId}`);
     

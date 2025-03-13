@@ -90,3 +90,29 @@ This project follows a monorepo structure using Turborepo with two main deployme
 - TypeScript for type safety
 - OpenAI GPT-4 Vision for image analysis and text extraction
 # calai
+
+## Vercel Deployment
+
+For the Vercel deployment to work correctly, you need to set up the processor service separately, as Vercel's serverless functions cannot run persistent servers. 
+
+Follow these steps:
+
+1. Deploy the processor service to a platform that supports long-running Node.js applications:
+   - Render
+   - Railway
+   - DigitalOcean
+   - Heroku
+   - AWS EC2
+
+2. Once deployed, get the URL of your processor service.
+
+3. In your Vercel project settings, add the following environment variables:
+   ```
+   PROCESSOR_API_URL=https://calai-web.vercel.app
+   PROCESSOR_API_PATH=/api/processor
+   NEXT_PUBLIC_APP_URL=https://calai-web.vercel.app
+   ```
+
+4. Make sure your processor service has CORS configured to accept requests from your Vercel domain.
+
+The issue with the current deployment is that the web app is trying to connect to a local processor service at http://localhost:3002, which doesn't exist in Vercel's serverless environment.

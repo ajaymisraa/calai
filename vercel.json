@@ -7,5 +7,10 @@
   },
   "buildCommand": "npm run build",
   "installCommand": "npm install",
-  "outputDirectory": "apps/web/.next"
+  "outputDirectory": "apps/web/.next",
+  "env": {
+    "PROCESSOR_API_URL": "https://calai-web.vercel.app",
+    "PROCESSOR_API_PATH": "/api/processor",
+    "NEXT_PUBLIC_APP_URL": "https://calai-web.vercel.app"
+  }
 }
