@@ -109,7 +109,7 @@ Follow these steps:
 3. In your Vercel project settings, add the following environment variables:
    ```
    PROCESSOR_API_URL=https://calai-web.vercel.app
-   PROCESSOR_API_PATH=/api/processor
+   PROCESSOR_API_PATH=/api
    NEXT_PUBLIC_APP_URL=https://calai-web.vercel.app
    ```
 

@@ -10,7 +10,7 @@
   "outputDirectory": "apps/web/.next",
   "env": {
     "PROCESSOR_API_URL": "https://calai-web.vercel.app",
-    "PROCESSOR_API_PATH": "/api/processor",
+    "PROCESSOR_API_PATH": "/api",
     "NEXT_PUBLIC_APP_URL": "https://calai-web.vercel.app"
   }
 }

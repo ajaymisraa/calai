@@ -8,6 +8,8 @@
   "globalEnv": [
     "NODE_ENV",
     "PROCESSOR_API_URL",
+    "PROCESSOR_API_PATH",
+    "NEXT_PUBLIC_APP_URL",
     "CHROME_PATH",
     "NEXT_PUBLIC_*",
     "VERCEL"

@@ -73,7 +73,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     
     // Process the image with the processor service
     const processorApiUrl = process.env.PROCESSOR_API_URL || 'http://localhost:3001';
-    const apiPath = process.env.PROCESSOR_API_PATH || '/api/processor';
+    const apiPath = process.env.PROCESSOR_API_PATH || '/api';
     
     // Use the processor API URL with API path
     const baseUrl = `${processorApiUrl}${apiPath}`;
