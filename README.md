@@ -5,6 +5,8 @@ This project is a monorepo built with Turborepo that extracts text from book cov
 1. **Web Service**: Handles user uploads and displays results
 2. **Processor Service**: Performs the actual AI processing of book images
 
+This was built as a take-home assignment for Cal AI. Developed by Ajay Misra. 
+
 ## How It Works
 
 1. User uploads an image of a book cover through the web interface
@@ -103,6 +105,8 @@ Follow these steps:
    - DigitalOcean
    - Heroku
    - AWS EC2
+  
+   - (Keep in mind, it should support serverless functions.) 
 
 2. Once deployed, get the URL of your processor service.
 
